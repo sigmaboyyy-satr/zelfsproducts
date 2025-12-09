@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Support | ZelfsProducts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #1a0505, #051a05);
+            --neon-red: #ff0033;
+            --neon-green: #00ff66;
+            --silver-black: linear-gradient(to bottom, #e0e0e0 0%, #333333 100%);
+            --text-main: #ffffff;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+        [data-theme="light"] { --bg-gradient: linear-gradient(135deg, #f0dada, #daf0da); --text-main: #000; }
+        body { margin: 0; font-family: sans-serif; background: var(--bg-gradient); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
+        
+        .neon-border { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; box-shadow: inset 0 0 20px var(--neon-red), inset 0 0 20px var(--neon-green); z-index: 999; }
+        
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: var(--glass); border-bottom: 1px solid #333; }
+        .brand-title { font-size: 3rem; font-weight: 900; background: var(--silver-black); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; }
+        .slogan { font-family: cursive; font-size: 1.8rem; color: var(--neon-red); margin-top: -10px; transform: rotate(-2deg); }
+        
+        nav ul { display: flex; gap: 20px; list-style: none; }
+        nav a { text-decoration: none; color: var(--text-main); font-weight: bold; padding: 10px; }
+        nav a:hover, nav a.active { color: var(--neon-green); border-bottom: 2px solid var(--neon-red); }
+
+        .content-area { padding: 50px; max-width: 1200px; margin: 0 auto; flex: 1; }
+        h2 { font-size: 2.5rem; border-left: 5px solid var(--neon-red); padding-left: 15px; }
+
+        footer { text-align: center; padding: 20px; background: #000; color: #888; margin-top: auto; }
+        .ui-btn { background: rgba(0,0,0,0.5); border: 1px solid var(--neon-green); color: white; padding: 8px 15px; cursor: pointer; }
+
+        input, textarea { background: #222; color: white; border: 1px solid silver; width: 100%; box-sizing: border-box; }
+    </style>
+</head>
+<body data-theme="dark">
+    <div class="neon-border"></div>
+    <header>
+        <div>
+            <div style="font-size:2rem;">👍</div>
+            <h1 class="brand-title">ZelfsProducts</h1>
+            <div class="slogan">Season 26 The Evolution</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="evolution.html">Our Evolution</a></li>
+                <li><a href="games.html">Our Games</a></li>
+                <li><a href="support.html" class="active">Support</a></li>
+            </ul>
+        </nav>
+        <div>
+            <button class="ui-btn" onclick="toggleTheme()">Lights</button>
+            <button class="ui-btn" onclick="document.getElementById('ai-modal').style.display='block'">AI Chat</button>
+        </div>
+    </header>
+
+    <div class="content-area">
+        <h2>Support Center</h2>
+        <p>Need help with connection wires or backend logic?</p>
+        <form style="display: flex; flex-direction: column; gap: 10px; max-width: 400px;">
+            <input type="text" placeholder="Username" style="padding: 10px;">
+            <textarea placeholder="Describe your issue..." style="padding: 10px; height: 100px;"></textarea>
+            <button type="button" style="padding: 10px; background: silver; font-weight: bold; cursor: pointer;">Submit Ticket</button>
+        </form>
+    </div>
+
+    <!-- AI MODAL -->
+    <div id="ai-modal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); width:400px; background:#000; border:2px solid var(--neon-red); padding:20px; z-index:2000;">
+        <span onclick="document.getElementById('ai-modal').style.display='none'" style="float:right; cursor:pointer; color:red;">X</span>
+        <h3 style="color:white;">AI Architect</h3>
+        <textarea style="width:100%; height:100px; background:#111; color:lime;" placeholder="Template input..."></textarea>
+        <button style="width:100%; margin-top:10px; background:var(--neon-green); border:none; padding:10px;">PROCESS</button>
+    </div>
+
+    <footer>
+        <p>© ZelfsProducts™ All Reserved</p>
+        <p style="font-size: 0.8rem;">Designed by me with support by me just CSS with backend c# js java RB connection wires etc</p>
+        <a href="https://github.com" style="color: var(--neon-red);">Connect to my GitHub repo</a>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            body.setAttribute('data-theme', body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        }
+    </script>
+</body>
+</html>

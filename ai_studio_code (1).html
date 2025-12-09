@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home | ZelfsProducts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* --- CSS EMBEDDED DIRECTLY --- */
+        :root {
+            --bg-gradient: linear-gradient(135deg, #1a0505, #051a05);
+            --bg-solid: #0a0a0a;
+            --neon-red: #ff0033;
+            --neon-green: #00ff66;
+            --silver-black: linear-gradient(to bottom, #e0e0e0 0%, #333333 100%);
+            --text-main: #ffffff;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        [data-theme="light"] {
+            --bg-gradient: linear-gradient(135deg, #f0dada, #daf0da);
+            --text-main: #000000;
+            --silver-black: linear-gradient(to bottom, #555 0%, #000 100%);
+            --glass: rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+            transition: background 0.5s ease;
+        }
+
+        /* NEON ANIMATIONS */
+        .neon-border {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 999;
+            box-shadow: inset 0 0 20px var(--neon-red), inset 0 0 20px var(--neon-green);
+            animation: pulseNeon 3s infinite alternate;
+        }
+        @keyframes pulseNeon {
+            0% { box-shadow: inset 0 0 10px var(--neon-red), inset 0 0 10px var(--neon-green); }
+            100% { box-shadow: inset 0 0 30px var(--neon-red), inset 0 0 30px var(--neon-green); }
+        }
+
+        .corner-mover { position: fixed; width: 50px; height: 50px; border: 4px solid transparent; z-index: 1000; }
+        .top-left { top: 10px; left: 10px; border-top: 4px solid var(--neon-red); border-left: 4px solid var(--neon-red); animation: moveTL 2s infinite; }
+        .bottom-right { bottom: 10px; right: 10px; border-bottom: 4px solid var(--neon-green); border-right: 4px solid var(--neon-green); animation: moveBR 2s infinite; }
+        @keyframes moveTL { 0% { transform: translate(0,0); } 50% { transform: translate(5px, 5px); } 100% { transform: translate(0,0); } }
+        @keyframes moveBR { 0% { transform: translate(0,0); } 50% { transform: translate(-5px, -5px); } 100% { transform: translate(0,0); } }
+
+        /* HEADER */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 40px; background: var(--glass); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .brand-title {
+            font-size: 3rem; font-weight: 900; text-transform: uppercase;
+            background: var(--silver-black); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin: 0; letter-spacing: -2px;
+        }
+        .slogan {
+            font-family: 'Brush Script MT', cursive; font-size: 1.8rem; color: var(--neon-red);
+            margin-top: -10px; transform: rotate(-2deg); text-shadow: 0 0 5px var(--neon-green);
+        }
+        .logo-thumb { font-size: 2rem; }
+
+        /* NAV */
+        nav ul { display: flex; gap: 20px; list-style: none; }
+        nav a { text-decoration: none; color: var(--text-main); font-weight: bold; padding: 10px 20px; transition: 0.3s; }
+        nav a:hover, nav a.active { border-bottom: 2px solid var(--neon-red); color: var(--neon-green); }
+
+        /* BUTTONS & MODAL */
+        .ui-controls button { background: rgba(0,0,0,0.5); border: 1px solid var(--neon-green); color: white; padding: 10px 15px; cursor: pointer; border-radius: 5px; margin-left: 10px; }
+        .ui-controls button:hover { background: var(--neon-green); color: black; }
+        #ai-modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; background: #000; border: 2px solid var(--neon-red); z-index: 2000; padding: 20px; }
+        .close-modal { float: right; cursor: pointer; color: red; font-weight: bold; }
+        textarea { width: 100%; height: 100px; background: #111; color: lime; border: 1px solid #333; margin-top: 10px; }
+
+        /* CONTENT */
+        .content-area { padding: 50px; max-width: 1200px; margin: 0 auto; flex: 1; }
+        h2 { font-size: 2.5rem; border-left: 5px solid var(--neon-red); padding-left: 15px; }
+
+        /* FOOTER */
+        footer { text-align: center; padding: 20px; background: #000; border-top: 1px solid #333; margin-top: auto; color: #888; }
+        .social-links a { margin: 0 10px; color: white; font-size: 1.5rem; }
+    </style>
+</head>
+<body data-theme="dark">
+    <!-- VISUALS -->
+    <div class="neon-border"></div>
+    <div class="corner-mover top-left"></div>
+    <div class="corner-mover bottom-right"></div>
+
+    <header>
+        <div>
+            <div class="logo-thumb">👍</div>
+            <h1 class="brand-title">ZelfsProducts</h1>
+            <div class="slogan">Season 26 The Evolution</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="evolution.html">Our Evolution</a></li>
+                <li><a href="games.html">Our Games</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+        </nav>
+        <div class="ui-controls">
+            <button onclick="toggleTheme()"><i class="fas fa-lightbulb"></i> Lights</button>
+            <button onclick="openAI()"><i class="fas fa-robot"></i> AI Chat</button>
+        </div>
+    </header>
+
+    <div class="content-area">
+        <h2>Welcome to Season 26</h2>
+        <p>Experience the next generation of digital products. The red and green energy flows through our latest update.</p>
+        <div style="margin-top: 30px; padding: 20px; background: rgba(255,255,255,0.1); border-left: 4px solid silver;">
+            <h3>Latest Announcement</h3>
+            <p>System update 26.0 is live. Backend connections stable.</p>
+        </div>
+    </div>
+
+    <!-- AI MODAL -->
+    <div id="ai-modal">
+        <span class="close-modal" onclick="closeAI()">X</span>
+        <h3 style="color:white; margin:0;">AI Template Builder</h3>
+        <p style="font-size:0.8rem; color:#aaa;">Connected to C# Backend Node</p>
+        <textarea placeholder="Paste template for processing..."></textarea>
+        <button style="width:100%; margin-top:10px; background:var(--neon-green); border:none; padding:10px; font-weight:bold; cursor:pointer;">PROCESS</button>
+    </div>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-discord"></i></a>
+        </div>
+        <p>© ZelfsProducts™ All Reserved</p>
+        <p style="font-size: 0.8rem;">Designed by me with support by me just CSS with backend c# js java RB connection wires etc</p>
+        <a href="https://github.com" style="color: var(--neon-red);">Connect to my GitHub repo</a>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            body.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
+        }
+        function openAI() { document.getElementById('ai-modal').style.display = 'block'; }
+        function closeAI() { document.getElementById('ai-modal').style.display = 'none'; }
+    </script>
+</body>
+</html>
